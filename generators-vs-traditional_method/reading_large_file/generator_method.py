@@ -1,4 +1,26 @@
 """_summary_
+
+Common Use Cases of Line-by-Line Processing:
+
+01. Log File Analysis: 
+    Efficiently scan large log files for patterns, errors, or metrics without loading
+    the entire file into memory.
+    
+02. Data Processing Pipelines:
+    Handle large datasets (e.g., CSV, JSON logs) by processing data incrementally,
+    ideal for batch processing or real-time transformations.
+
+03. Large Text Files:
+    Process huge text files, such as datasets or raw data, while keeping memory usage low.
+
+04. File Transformation:
+    Read, transform, or filter data line by line, and write to another file without memory
+    overload.
+
+05. Streaming Data:
+    Work with continuous data streams (e.g., log monitoring, real-time data pipelines) by
+    processing each line as it comes without preloading everything.
+
 """
 import time
 from memory_profiler import memory_usage
