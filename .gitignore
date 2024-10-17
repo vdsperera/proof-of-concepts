@@ -1,0 +1,5 @@
+.vscode/
+venv/
+
+generators-vs-traditional_method/reading_large_file/test_file1.txt
+generators-vs-traditional_method/reading_large_file/test_file2.txt
