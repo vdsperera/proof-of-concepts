@@ -13,14 +13,23 @@ def read_file_traditional(p_file_path):
         _type_: _description_
     """
     with open(p_file_path, encoding='utf-8') as file:
-        data = file.readlines()
-    return data
+        all_lines = file.readlines()
+    return all_lines
 
-G_FILE_PATH = r"generators-vs-traditional_method/reading_large_file/test_file.txt"
+def process_data(p_file_path):
+    """_summary_
+
+    Args:
+        p_file_path (_type_): _description_
+    """
+    for _ in read_file_traditional(p_file_path):
+        pass
+
+G_FILE_PATH = r"generators-vs-traditional_method/reading_large_file/test_file1.txt"
 
 # Measure Time and Memory Usage
 g_start_time = time.time()
-mem_usage_traditional  = memory_usage((read_file_traditional, (G_FILE_PATH, )))
+mem_usage_traditional  = memory_usage((process_data, (G_FILE_PATH, )))
 g_end_time = time.time()
 
 #Show results

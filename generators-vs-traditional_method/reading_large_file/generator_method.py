@@ -16,7 +16,7 @@ def read_file_generator(p_file_path):
         for line in file:
             yield line
 
-def consume_generator(p_file_path):
+def process_data(p_file_path):
     """_summary_
 
     Args:
@@ -25,7 +25,7 @@ def consume_generator(p_file_path):
     for _ in read_file_generator(p_file_path):
         pass
 
-G_FILE_PATH = r"generators-vs-traditional_method/reading_large_file/test_file.txt"
+G_FILE_PATH = r"generators-vs-traditional_method/reading_large_file/test_file1.txt"
 
 # Measure Time and Memory Usage
 g_start_time = time.time()
