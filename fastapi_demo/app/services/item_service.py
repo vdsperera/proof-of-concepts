@@ -1,7 +1,7 @@
 """_summary_
 """
 
-from fastapi_demo.app.models import Item
+from fastapi_demo.app.models.item_model import Item
 from fastapi_demo.app.repositories import item_repository
 
 

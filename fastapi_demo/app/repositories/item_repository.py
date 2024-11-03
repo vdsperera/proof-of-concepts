@@ -1,7 +1,7 @@
 """_summary_
 """
 
-from fastapi_demo.app.models import Item
+from fastapi_demo.app.models.item_model import Item
 
 item_db = {
     1: Item(id=1, name="Laptop", description="A powerful laptop", price=1000.0),

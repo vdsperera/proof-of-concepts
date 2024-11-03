@@ -2,7 +2,7 @@
 """
 
 from fastapi import APIRouter, HTTPException
-from fastapi_demo.app.models import Item
+from fastapi_demo.app.models.item_model import Item
 from fastapi_demo.app.services.item_service import create_item, get_item
 
 router = APIRouter()
