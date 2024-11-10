@@ -3,3 +3,5 @@ venv/
 
 generators_vs_traditional_method/reading_large_file/test_file1.txt
 generators_vs_traditional_method/reading_large_file/test_file2.txt
+
+fastapi_demo/app/__pycache__
