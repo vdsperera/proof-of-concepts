@@ -6,3 +6,7 @@ generators_vs_traditional_method/reading_large_file/test_file2.txt
 
 fastapi_demo/app/__pycache__
 fastapi_demo/__pycache__
+fastapi_demo/app/models/__pycache__/
+fastapi_demo/app/repositories/__pycache__/
+fastapi_demo/app/routers/__pycache__/
+fastapi_demo/app/services/__pycache__/
