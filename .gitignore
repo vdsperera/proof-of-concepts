@@ -1,5 +1,7 @@
 .vscode/
 venv/
+token.json
+credentials.json
 
 generators_vs_traditional_method/reading_large_file/test_file1.txt
 generators_vs_traditional_method/reading_large_file/test_file2.txt
