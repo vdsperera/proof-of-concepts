@@ -1,0 +1,11 @@
+Patient_Name,Gender,CPT_Code,Diagnosis_Code,NPI
+John Doe,Male,99213,Z00.00,1234567890
+Jane Smith,Female,81420,O09.529,0987654321
+Bob Brown,Male,81420,Z01.89,1122334455
+Alice Green,Female,99214,,9988776655
+Charlie White,Male,99213,J00,12345
+Eve Black,Female,81420,O09.529,12345678901
+David Blue,Male,45378,K63.5,5566778899
+Sarah Red,Female,81420,O09.529,4433221100
+Tom Grey,Male,99213,,6677889900
+Grace Gold,Female,99212,Z00.00,7788911223

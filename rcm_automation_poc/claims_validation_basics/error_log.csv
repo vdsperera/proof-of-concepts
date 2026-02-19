@@ -1,0 +1,7 @@
+Patient_Name,Reason,Field
+Jane Smith,"Value error, NPI must be exactly 10 digits, got 9",NPI
+Bob Brown,"Value error, CPT_Code 81420 (NIPT) is invalid for Gender: Male",model
+Alice Green,"Value error, Diagnosis_Code (ICD-10) is missing",Diagnosis_Code
+Charlie White,"Value error, NPI must be exactly 10 digits, got 5",NPI
+Eve Black,"Value error, NPI must be exactly 10 digits, got 11",NPI
+Tom Grey,"Value error, Diagnosis_Code (ICD-10) is missing",Diagnosis_Code

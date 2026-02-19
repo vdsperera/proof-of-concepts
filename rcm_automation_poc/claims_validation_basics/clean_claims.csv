@@ -1,0 +1,5 @@
+Patient_Name,Gender,CPT_Code,Diagnosis_Code,NPI
+John Doe,Male,99213,Z00.00,1234567890
+David Blue,Male,45378,K63.5,5566778899
+Sarah Red,Female,81420,O09.529,4433221100
+Grace Gold,Female,99212,Z00.00,7788911223
