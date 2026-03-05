@@ -5,10 +5,11 @@ with sync_playwright() as p:
     page = browser.new_page()
     page.goto("https://www.w3schools.com/html/html_forms.asp")
 
-    page.fill("input[id='fname']", "Dean")
-    page.fill("input[id='lname']", "John")
-    
-    page.click("input[type='submit']")
+    # checkbox selection
+    page.check("input[type='checkbox'][id='vehicle1']")
 
-    input("Enter to close..")
+    # radio button selection
+    page.check("input[type='radio'][id='html']")
+
+    input("Entet to close..")
     browser.close()

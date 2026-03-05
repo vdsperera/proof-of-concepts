@@ -13,3 +13,4 @@ fastapi_demo/app/models/__pycache__/
 fastapi_demo/app/repositories/__pycache__/
 fastapi_demo/app/routers/__pycache__/
 fastapi_demo/app/services/__pycache__/
+__pycache__
