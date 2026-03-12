@@ -6,6 +6,7 @@ import json
 with open("automation_poc\\common\\login_handling\\config.json") as f:
     config = json.load(f)
 
+
 def get_totp_code(is_array=False):
     totp = pyotp.TOTP(config["totp_secret"])
     if not is_array:
@@ -23,7 +24,8 @@ with sync_playwright() as playright:
     page.fill("input[type='password']", config["password"])
     page.click("button[data-test='login-btn']")
 
-    # wait unitl recaptcha is solved
+    # wait unitl recaptcha is solved(sometimes login flow directly
+    # go to totp. So it should be handled in both cases)
     print("Please solve the reCaptcha in the opened browser window.")
     while True:
         if page.is_visible("div[class='bcap-text-message-title']"):
