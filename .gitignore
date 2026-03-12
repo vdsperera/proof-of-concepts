@@ -2,6 +2,7 @@
 venv/
 token.json
 credentials.json
+config.json
 *.db
 
 generators_vs_traditional_method/reading_large_file/test_file1.txt
