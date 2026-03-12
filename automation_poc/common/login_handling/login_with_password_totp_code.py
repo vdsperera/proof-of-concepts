@@ -19,8 +19,8 @@ with sync_playwright() as playright:
     page = browser.new_page()
     page.goto("https://coinmarketcap.com/")
     page.click("button[data-test='Log In']")
-    page.fill("input[type='email']", "j1vidu@gmail.com")
-    page.fill("input[type='password']", "BJx@QrmkC42%5AW&")
+    page.fill("input[type='email']", config["email"])
+    page.fill("input[type='password']", config["password"])
     page.click("button[data-test='login-btn']")
 
     # wait unitl recaptcha is solved
