@@ -1,7 +1,17 @@
 from playwright.sync_api import sync_playwright
+from playwright.sync_api import expect
 import pyotp
 import json
 
+""" 
+POC SCOPE
+
+* login flow(enter email and password, wait until reCaptcha
+* is solved manually, enter 2FA code) is completed- DONE
+* basic structure of the code is defined - DONE
+* basic exception handling is implemented - IN PROGRESS
+* configuration management is implemented - DONE
+"""
 
 with open("automation_poc\\common\\login_handling\\config.json") as f:
     config = json.load(f)
@@ -24,27 +34,27 @@ with sync_playwright() as playright:
     page.fill("input[type='password']", config["password"])
     page.click("button[data-test='login-btn']")
 
-    # wait unitl recaptcha is solved(sometimes login flow directly
-    # go to totp. So it should be handled in both cases)
-    print("Please solve the reCaptcha in the opened browser window.")
-    while True:
-        if page.is_visible("div[class='bcap-text-message-title']"):
-            break
+    """
+    reCaptcha is sometimes required to be solved before
+    entering the 2FA code, and sometimes not. So it
+    should be handled in both cases.    
+    """
 
-    while True:
-        if not(page.is_visible("div[class='bcap-text-message-title']")):
-            break
+    locator = page.locator("div.bcap-text-message-title")
 
-    print("reCaptcha solved. Please enter the 2FA code.")
+    try:
+        locator.wait_for(state="visible", timeout=5000)
 
-    # enter the 2FA code
-    # div class=sc-78e96f85-2 sc-78e96f85-3 cQLkdg clXaOy
-    # input type=tel data-id="0"
-    # input type=tel data-id="1"
-    # input type=tel data-id="2"
-    # input type=tel data-id="3"
-    # input type=tel data-id="4"
-    # input type=tel data-id="5"
+        # If we reach here, element appeared → do next step
+        print("Have to solve the reCaptcha first.")
+
+        while True:
+            if not(page.is_visible("div[class='bcap-text-message-title']")):
+                break
+    except TimeoutError:
+        print("No need to solve the reCaptcha first.")  
+
+    # here I think totp can be expired while filling the fields
     page.fill("input[type='tel'][data-id='0']", get_totp_code()[0])
     page.fill("input[type='tel'][data-id='1']", get_totp_code()[1])
     page.fill("input[type='tel'][data-id='2']", get_totp_code()[2])
@@ -55,10 +65,3 @@ with sync_playwright() as playright:
     page.click("button[class='sc-c0a10c7b-0 brLkHp']")
 
     input("Browser is open. Press Enter to close...")
-
-
-# POC SCOPE
-# * login flow is completed
-# * basic structure of the code is defined
-# * basic exception handling is implemented
-# * configuration management is implemented
