@@ -1,6 +1,6 @@
 # File Download Strategies Proof of Concept
 
-This repository contains two different proof-of-concept (PoC) approaches for handling and capturing file downloads during automation.
+This repository contains three different proof-of-concept (PoC) approaches for handling and capturing file downloads during automation.
 
 ## 1. Playwright Native Event Stream Interception
 **Location:** [`playwright_native_event stream_interception/app.py`](file:///c:/Activities/Projects/proof-of-concepts/general_poc/download_files/playwright_native_event%20stream_interception/app.py)
@@ -40,3 +40,25 @@ This approach creates an isolated download directory per session/worker and reli
 **Cons:**
 - Relies on arbitrary timeouts and sleep intervals, which can slow down execution or cause flaky timeouts.
 - Requires manual cleanup of the temporary sandbox directories.
+
+---
+
+## 3. Direct Browser-to-Cloud Streaming (S3)
+**Location:** [`cloud-pipeline/app.py`](file:///c:/Activities/Projects/proof-of-concepts/general_poc/download_files/cloud-pipeline/app.py)
+
+This approach streams the downloaded file directly from the browser's temporary local cache into AWS S3 (or any other cloud storage) without requiring you to manually save and manage the file on disk.
+
+**How it works:**
+- It intercepts the network stream natively using `page.expect_download()`.
+- Instead of calling `download.save_as()`, it reads the file bytes directly into memory from Playwright's internal caching location using `download.path()`.
+- The raw byte stream is wrapped in a standard `io.BytesIO` object.
+- The stream is then uploaded directly to the cloud storage using the SDK (e.g., `boto3.client('s3').upload_fileobj()`) and tagged with relevant metadata.
+
+**Pros:**
+- Extremely clean storage footprint; avoids creating permanent files on the host machine.
+- Ideal for scalable cloud environments (Docker/Kubernetes) where local persistent disk space is limited or ephemeral.
+- Seamlessly injects business context (like Case IDs) as object metadata during the upload pipeline.
+
+**Cons:**
+- Requires loading the entire file payload into memory before streaming, which could be problematic for multi-gigabyte files.
+- More complex to set up due to the I/O stream wrapping and cloud credentials.
