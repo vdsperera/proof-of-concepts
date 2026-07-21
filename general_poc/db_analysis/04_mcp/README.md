@@ -49,8 +49,19 @@ This folder demonstrates **Approach 1 (Model Context Protocol - MCP)**, showing 
    ```
 
 > [!NOTE]
-> **Do you need to run `mcp_client_agent.py` in daily development?**
+> **Do you need to run `mcp_client_agent.py` in daily development?**  
 > **No!** `mcp_client_agent.py` is strictly a standalone test script to demonstrate the MCP protocol in Python code. In daily development, **your IDE / AI Assistant (Antigravity, Cursor, etc.) acts as the MCP client automatically**. You only need to register `mcp_db_server.py` in your IDE configuration.
+
+---
+
+## 🔄 How to Reuse This in Any Other Project
+
+To use database analysis in **any new project** (Django, FastAPI, Node.js, Spring, etc.):
+
+- **Option A (Custom Server)**: Copy `mcp_db_server.py` and `mcp_config.json` to your new project, and update the database connection credentials in `env`.
+- **Option B (Zero Code Copying)**: Put the official community server command (`npx @modelcontextprotocol/server-postgres`) directly into your IDE config.
+
+Once added, your AI Assistant will automatically read your new project's source code **AND** query your new database via MCP!
 
 ---
 
@@ -65,7 +76,7 @@ In modern AI coding tools (Antigravity, Cursor, Claude Desktop), add the server 
     "postgres-db": {
       "command": "python",
       "args": [
-        "c:/Activities/Projects/proof-of-concepts/general_poc/db_analysis/04_mcp/mcp_db_server.py"
+        "c:/path/to/your/project/mcp_db_server.py"
       ],
       "env": {
         "DB_HOST": "localhost",
