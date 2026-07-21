@@ -43,10 +43,14 @@ This folder demonstrates **Approach 1 (Model Context Protocol - MCP)**, showing 
    python .\general_poc\db_analysis\04_mcp\seed_mcp_db.py
    ```
 
-2. **Run the MCP Agent Client**:
+2. **Run the Standalone MCP Agent Client (Demo Test Only)**:
    ```powershell
    python .\general_poc\db_analysis\04_mcp\mcp_client_agent.py
    ```
+
+> [!NOTE]
+> **Do you need to run `mcp_client_agent.py` in daily development?**
+> **No!** `mcp_client_agent.py` is strictly a standalone test script to demonstrate the MCP protocol in Python code. In daily development, **your IDE / AI Assistant (Antigravity, Cursor, etc.) acts as the MCP client automatically**. You only need to register `mcp_db_server.py` in your IDE configuration.
 
 ---
 
